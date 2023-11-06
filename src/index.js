@@ -1,17 +1,24 @@
 import h from "./mysnabbdom/h";
 import patch from "./mysnabbdom/patch";
-
-const myVnode2 = h("section", {}, [h("h1", {}, "你好"), h("h1", {}, "你好2")]);
-const myVnode1 = h("ul", {}, [
-  h("li", {}, "A"),
-  h("li", {}, "B"),
-  h("li", {}, [h("div", {}, "heihei")]),
-  h("li", {}, [h("div", {}, "ll"), h("div", {}, "mm")]),
+// 老节点
+const myVnode1 = h("section", {}, [
+  h("h1", { key: "a" }, "A1"),
+  h("h1", { key: "b" }, "B1"),
+  h("h1", { key: "C" }, "C1"),
+  h("h1", { key: "D" }, "D1"),
+]);
+// 新节点
+const myVnode2 = h("section", {}, [
+  h("h1", { key: "ttt" }, "ttt"),
+  h("h1", { key: "b" }, "B1"),
+  h("h1", { key: "C" }, "C1"),
+  h("h1", { key: "qqq" }, "qqq"),
+  h("h1", { key: "a" }, "A1"),
+  h("h1", { key: "kkk" }, "kkk"),
 ]);
 const container = document.querySelector("#container");
-// patch(container, myVnode1);
+// 第一次上树
 patch(container, myVnode1);
-
 const btn = document.querySelector(".btn");
 btn.addEventListener("click", function () {
   patch(myVnode1, myVnode2);

@@ -20,7 +20,7 @@ export default function createElement(vnode) {
       // 创建出它的DOM，一但调用createElement意味着：创建出了DOM了，
       // 并且它的elm属性指向了创建出的DOM，但是没有上树是一个孤儿节点
       let chDOM = createElement(ch); //这里拿的是 createElement的返回值
-      console.log(chDOM); // 经过createElment 递归将children里面的Vnode 变为 DOM
+      // console.log(chDOM); // 经过createElment 递归将children里面的Vnode 变为 DOM
       // 上树
       domNode.appendChild(chDOM); //domNode 相当于ul 添加字节点
     }
@@ -29,6 +29,6 @@ export default function createElement(vnode) {
   vnode.elm = domNode;
   //   console.log(domNode);
   //   返回elm，elm属性是一个纯dom对象
-  console.log(vnode.elm);
+  // console.log(vnode.elm);
   return vnode.elm;
 }
